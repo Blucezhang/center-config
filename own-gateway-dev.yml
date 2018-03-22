@@ -1,0 +1,51 @@
+
+zuul:
+  ignoredServices: '*'
+  host:
+    connect-timeout-millis: 30000
+    socket-timeout-millis: 30000
+  routes:
+    proudkids-auth:
+      path: /auth/**
+      serviceId: proudkids-auth
+      stripPrefix: true
+      sensitiveHeaders:
+
+  ratelimit:
+    key-prefix: own-ratelimite
+    enabled: true 
+    repository: REDIS 
+    behind-proxy: true
+    policies:
+      proudkids-upms-service:
+        limit: 100
+        quota: 100
+        refresh-interval: 3
+
+security:
+  validate:
+    code: false
+  sessions: stateless
+  oauth2:
+    resource:
+      loadBalanced: true
+      user-info-uri: http://own-auth/user/info
+      prefer-token-info: false
+      service-id: own-api-gateway
+
+urls:
+  anon:
+    - /mobile/**
+    - /auth/**
+    - /admin/code/*
+    - /admin/smsCode/*
+    - /admin/user/info
+    - /admin/menu/userTree
+    - /swagger-resources/**
+    - /swagger-ui.html
+    - /*/v2/api-docs
+    - /swagger/api-docs
+    - /webjars/**
+       
+logging:
+  config: classpath:logback.xml
