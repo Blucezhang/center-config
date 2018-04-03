@@ -6,7 +6,7 @@ jasypt:
 spring:
   redis:
     remote: true        #cachecloud 获取
-    host: 192.168.1.82
+    host:
     port: 6379
     password:
   http:
@@ -46,13 +46,4 @@ hystrix:
         isolation:
           thread:
             timeoutInMilliseconds: 60000
-    
-#监控短点配置
-management:
-  security:
-    enabled: false
-endpoints:
-  actuator:
-    enabled: true
-  shutdown:
-    enabled: false
+

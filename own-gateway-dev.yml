@@ -6,8 +6,8 @@ zuul:
     socket-timeout-millis: 30000
   routes:
     proudkids-auth:
-      path: /auth/**
-      serviceId: proudkids-auth
+      path:
+      serviceId:
       stripPrefix: true
       sensitiveHeaders:
 
@@ -33,19 +33,6 @@ security:
       prefer-token-info: false
       service-id: own-api-gateway
 
-urls:
-  anon:
-    - /mobile/**
-    - /auth/**
-    - /admin/code/*
-    - /admin/smsCode/*
-    - /admin/user/info
-    - /admin/menu/userTree
-    - /swagger-resources/**
-    - /swagger-ui.html
-    - /*/v2/api-docs
-    - /swagger/api-docs
-    - /webjars/**
        
 logging:
   config: classpath:logback.xml
