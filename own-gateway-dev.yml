@@ -54,14 +54,6 @@ zuul:
       sensitiveHeaders:
 
 
-
-  ratelimit:
-    key-prefix: proudkids-ratelimite
-    enabled: true
-    repository: REDIS
-    behind-proxy: true
-
-
 security:
   validate:
     code: false
