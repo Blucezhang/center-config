@@ -1,26 +1,66 @@
+server:
+  port: 9999
+
+spring:
+  zipkin:
+    rabbitmq:
+      queue: zipkin
+  sleuth:
+    sampler:
+      percentage: 0.5
+  http:
+      encoding:
+        charset: UTF-8
+        enabled: true
+        force: true
+
 
 zuul:
+  servlet-path: /api-gateway
   ignoredServices: '*'
   host:
     connect-timeout-millis: 30000
     socket-timeout-millis: 30000
   routes:
-    proudkids-auth:
-      path:
-      serviceId:
+    own-file:
+      path: /file/**
+      serviceId: own-file
+      stripPrefix: true
+      sensitiveHeaders:
+   own-product:
+      path: /product/**
+      serviceId: own-product
+      stripPrefix: true
+      sensitiveHeaders:
+    own-promotion:
+      path: /promotion/**
+      serviceId: own-promotion
+      stripPrefix: true
+      sensitiveHeaders:
+    own-send-server:
+      path: /send/server/**
+      serviceId: own-send-server
+      stripPrefix: true
+      sensitiveHeaders:
+    own-user-party:
+      path: /user/send/**
+      serviceId: own-user-party
+      stripPrefix: true
+      sensitiveHeaders:
+    own-workflow:
+      path: /workflow/**
+      serviceId: own-workflow
       stripPrefix: true
       sensitiveHeaders:
 
+
+
   ratelimit:
-    key-prefix: own-ratelimite
-    enabled: true 
-    repository: REDIS 
+    key-prefix: proudkids-ratelimite
+    enabled: true
+    repository: REDIS
     behind-proxy: true
-    policies:
-      proudkids-upms-service:
-        limit: 100
-        quota: 100
-        refresh-interval: 3
+
 
 security:
   validate:
@@ -29,10 +69,15 @@ security:
   oauth2:
     resource:
       loadBalanced: true
-      user-info-uri: http://own-auth/user/info
+      user-info-uri: http://proudkids-auth/user
       prefer-token-info: false
-      service-id: own-api-gateway
+      service-id: proudkids-gateway
 
-       
+urls:
+  anon:
+    - /swagger-resources/**
+    - /swagger-ui.html
+    - /swagger/api-docs
+
 logging:
   config: classpath:logback.xml
