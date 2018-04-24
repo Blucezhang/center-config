@@ -66,12 +66,6 @@ security:
   validate:
     code: false
   sessions: stateless
-  oauth2:
-    resource:
-      loadBalanced: true
-      user-info-uri: http://proudkids-auth/user
-      prefer-token-info: false
-      service-id: proudkids-gateway
 
 urls:
   anon:
