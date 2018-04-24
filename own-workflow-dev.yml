@@ -33,7 +33,6 @@ sharding:
                 algorithm-expression: sys_log_${id % 2}
             key-generator-column-name: id
 
-#mybaits-plus配置，修改主键类型，mapper.xml、type 别名等
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: true
