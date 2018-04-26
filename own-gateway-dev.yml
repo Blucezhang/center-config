@@ -15,7 +15,7 @@ spring:
 
 
 zuul:
-  servlet-path: /own-gateway
+  servlet-path: /zuul
   ignoredServices: '*'
   host:
     connect-timeout-millis: 30000
@@ -26,7 +26,7 @@ zuul:
       serviceId: own-file
       stripPrefix: true
       sensitiveHeaders:
-   own-product:
+    own-product:
       path: /product/**
       serviceId: own-product
       stripPrefix: true
@@ -42,7 +42,7 @@ zuul:
       stripPrefix: true
       sensitiveHeaders:
     own-user-party:
-      path: /user/send/**
+      path: /user/party/**
       serviceId: own-user-party
       stripPrefix: true
       sensitiveHeaders:
@@ -51,6 +51,8 @@ zuul:
       serviceId: own-workflow
       stripPrefix: true
       sensitiveHeaders:
+
+
 
 
 security:
