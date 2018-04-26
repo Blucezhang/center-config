@@ -18,7 +18,7 @@ spring:
 
 
 zuul:
-  servlet-path: /own-api-gateway
+  servlet-path: /own-gateway
   ignoredServices: '*'
   host:
     connect-timeout-millis: 30000
