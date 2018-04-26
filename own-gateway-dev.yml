@@ -1,8 +1,5 @@
-debug: true
-
 logging.level: debug
 server.port: 9632
-
 spring:
   zipkin:
     rabbitmq:
